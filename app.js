@@ -16,7 +16,7 @@ app.use("/api/v1/tasks", taskRoute); // 共通する部分を第一引数に 26 
 const start = async () => {
     try {
         await connectDB(process.env.MONGO_URL); // .envファイル内を見る記述
-        app.listen(PORT, console.log("サーバーが起動しました"));
+        app.listen(process.env.PORT || PORT, console.log("サーバーが起動しました")); // 61 herokuに用意されているポートを使うための設定
     } catch (err) {
         console.log(err);
     }
